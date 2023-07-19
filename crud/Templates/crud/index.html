@@ -9,8 +9,17 @@
 </head>
 <body>
     <h1> This is simon here.</h1>
+    <ul style="list-style-type:circle">
     {%for blog in blogs%}
-    <h2>{{blog.title}}</h2>
+        <li><h2>{{blog.title}}</h2></li>
+    
     <h3>{{blog.description}}</h3>
     {%endfor%}
+    </ul>
+    {%if blog%}
+    <h1>{{blog.title}}</h1>
+    <h2>{{blog.description}}</h2>
+    {%endif%}
+    
+</body>
 </html>

@@ -1,0 +1,10 @@
+<div class="container" >
+  <form method="post" style="display: flex; flex-direction: column">
+    {% csrf_token %}
+    <p>Name</p>
+    <input type="text" value="" name="name" required />
+    <p>Email</p>
+    <input type="text" value="" name="email" required />
+    <button type="submit">Send</button>
+  </form>
+</div>

@@ -1,7 +1,16 @@
 <div>
+    <a href="{%url 'index'%}">Home</a>
+    <h1>Create Your Blog</h1>
     <form method="post">
         {%csrf_token%}
         {{form}}
         <button type="submit">Submit</button>
     </form>
+    <style>
+        form {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+    </style>
 </div>

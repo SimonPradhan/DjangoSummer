@@ -1,5 +1,6 @@
+{%extends 'base.html'%}
 {%load static%}
-
+{%block body%}
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -7,10 +8,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
   </head>
-  <t>
-    <a href="{%url 'index'%}">Home</a><t>
-    <a href="{%url 'create'%}">Create</a>
-    <a href="{%url 'contacts'%}">Contact Us</a>
+  <body>
+    <a href="{%url 'crud:index'%}">Home</a><body>
+    <a href="{%url 'crud:create'%}">Create</a>
+    <a href="{%url 'crud:contacts'%}">Contact Us</a>
     <h1>This is simon here.</h1>
     <ul style="list-style-type: circle">
       {%for blog in blogs%}
@@ -25,12 +26,19 @@
     {%if blog%}
     <h1>{{blog.title}}</h1>
     <h2>{{blog.description}}</h2>
-    <a href="{%url 'delete' blog.id%}">
+    <a href="{%url 'crud:delete' blog.id%}">
       <button type="sumbit">Delete</button>
     </a>
-    <a href="{%url 'update' blog.id%}">
+    <a href="{%url 'crud:update' blog.id%}">
       <button type="sumbit">Update</button>
     </a>
-    {%endif%}
   </body>
-</html>
+  <style>
+    body {
+      background-color: #000;
+      color: #fff;
+    }
+  </style>
+    {%endif%}
+{%endblock%}
+

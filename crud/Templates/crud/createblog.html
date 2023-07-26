@@ -1,0 +1,87 @@
+{%extends 'base.html'%}
+{% load static %}
+{% block body %}
+
+<header class="masthead" style="background-image: url({%static 'assets/img/contact-bg.jpg'%})">
+    <div class="container position-relative px-4 px-lg-5">
+        <div class="row gx-4 gx-lg-5 justify-content-center">
+            <div class="col-md-10 col-lg-8 col-xl-7">
+                <div class="page-heading">
+                    <h1>Create your Blog</h1>
+                    <span class="subheading">Have questions? I have answers.</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+<!-- Main Content-->
+<main class="mb-4">
+    <div class="container px-4 px-lg-5">
+        <div class="row gx-4 gx-lg-5 justify-content-center">
+            <div class="col-md-10 col-lg-8 col-xl-7">
+                <p>
+                    Write a beautiful and amazing blog that the user wants to read man come on don't just write a block
+                    of text that's boring to read.
+                </p>
+                <div class="my-5">
+                    <form id="contactForm" method="post" data-sb-form-api-token="API_TOKEN">
+                        {%csrf_token%}
+                        <div class="form-floating">
+                            <input class="form-control" id="title" type="text" placeholder="Enter your title..."
+                                data-sb-validations="required" name="title" />
+                            <label for="title">Title</label>
+                            <div class="invalid-feedback" data-sb-feedback="title:required">
+                                A title is required.
+                            </div>
+                        </div>
+
+                        <div class="form-floating">
+                            <input class="form-control" id="subheading" type="text" placeholder="Subheading..."
+                                data-sb-validations="required" name="subheading"/>
+                            <label for="subheading">Sub Heading</label>
+                            <div class="invalid-feedback" data-sb-feedback="subheading:required">
+                                A Sub Heading is required.
+                            </div>
+                            <div class="form-floating">
+                                <textarea class="form-control" id="description" placeholder="Enter your message here..." name="description"
+                                    style="height: 12rem" data-sb-validations="required"></textarea>
+                                <label for="description">Description</label>
+                                <div class="invalid-feedback" data-sb-feedback="description:required">
+                                    Description is required.
+                                </div>
+                            </div>
+                            <br />
+                            <!-- Submit success message-->
+                            <!---->
+                            <!-- This is what your users will see when the form-->
+                            <!-- has successfully submitted-->
+                            <div class="d-none" id="submitSuccessMessage">
+                                <div class="text-center mb-3">
+                                    <div class="fw-bolder">Form submission successful!</div>
+                                    To activate this form, sign up at
+                                    <br />
+                                    <a
+                                        href="https://startbootstrap.com/solution/contact-forms">https://startbootstrap.com/solution/contact-forms</a>
+                                </div>
+                            </div>
+                            <!-- Submit error message-->
+                            <!---->
+                            <!-- This is what your users will see when there is-->
+                            <!-- an error submitting the form-->
+                            <div class="d-none" id="submitErrorMessage">
+                                <div class="text-center text-danger mb-3">
+                                    Error sending message!
+                                </div>
+                            </div>
+                            <!-- Submit Button-->
+                            <button class="btn btn-primary text-uppercase" id="submit" type="submit">
+
+                                POST
+                            </button>
+                    </form>
+                </div>
+                {% endblock %}
+            </div>
+        </div>
+    </div>
+</main>

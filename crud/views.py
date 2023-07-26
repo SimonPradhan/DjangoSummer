@@ -17,28 +17,28 @@ def create(request):
     form= BlogForm(request.POST or None)
     if form.is_valid():
         form.save()
-        return redirect("index")
-    return render(request, "crud/create.html", {"form":form})
+        return redirect("crud:index")
+    return render(request, "crud/createblog.html", {"form":form})
 
 def delete(request, id):
     blog = Blog.objects.get(id=id)
     blog.delete()
-    return redirect("index")
+    return redirect("crud:index")
 
 def update(request, id):
     blog = Blog.objects.get(id=id)
     form = BlogForm(request.POST or None, instance=blog)
     if form.is_valid():
         form.save()
-        return redirect("index")
-    return render(request, "crud/create.html", {"form":form, "blog":blog})
+        return redirect("crud:index")
+    return render(request, "crud/createblog.html", {"form":form, "blog":blog})
 
 def partData(request, id):
     blog = Blog.objects.get(id=id)
     context ={
         "blog":blog
     }
-    return render(request, "crud/index.html", context)
+    return render(request, "crud/home.html", context)
 
 def contacts(request):
     if(request.method == 'POST'):
@@ -50,5 +50,10 @@ def contacts(request):
             email=dataEmail
         )
         contacts.save()
-    return render(request, "crud\contactus.html")
+    return render(request, "crud\contact.html")
+
+def post(request):
+    return render(request, "crud/post.html")
+
+
 

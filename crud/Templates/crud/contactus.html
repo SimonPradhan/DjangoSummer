@@ -1,5 +1,9 @@
+{%extends 'base.html'%}
+{% load static %}
+{% block body %}
+
 <div class="container" >
-  <a href="{% url 'index' %}">Home</a>
+  <a href="{% url 'crud:index' %}">Home</a>
   <h1>Contact Us</h1>
   <form method="post" style="display: flex; flex-direction: column">
     {% csrf_token %}
@@ -10,3 +14,4 @@
     <button type="submit">Send</button>
   </form>
 </div>
+{% endblock %}

@@ -8,8 +8,8 @@
     <div class="row gx-4 gx-lg-5 justify-content-center">
       <div class="col-md-10 col-lg-8 col-xl-7">
         <div class="site-heading">
-          <h1>Clean Blog</h1>
-          <span class="subheading">A Blog Theme by Start Bootstrap</span>
+          <h1>Neat Blog</h1>
+          <span class="subheading">A Blog by Simon Pradhananga</span>
         </div>
       </div>
     </div>
@@ -28,14 +28,14 @@
         </a>
         <p class="post-meta">
           Posted by
-          <a href="#!">Start Bootstrap</a>
+          <a href="#!">Simon Pradhananga</a>
           on September 24, 2023
         </p>
       </div>
       {%endfor%} 
       {%if blog%}
       <h1>{{blog.title}}</h1>
-      <h3>{{blog.description}}</h3>
+      <p>{{blog.description}}</p>
       <a href="{%url 'crud:delete' blog.id%}">
         <button type="sumbit">Delete</button>
       </a>
@@ -46,7 +46,7 @@
       <hr class="my-4" />
       <!-- Pager-->
       <div class="d-flex justify-content-end mb-4">
-        <a class="btn btn-primary text-uppercase" href="#!">Older Posts →</a>
+        <a class="btn btn-primary text-uppercase" href="{%url 'crud:index'%}">Older Posts →</a>
       </div>
     </div>
   </div>

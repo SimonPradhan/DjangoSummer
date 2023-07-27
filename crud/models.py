@@ -15,3 +15,12 @@ class Contacts(models.Model):
 
     def __str__(self):
         return self.name
+    
+class User(models.Model):
+    firstname = models.CharField(max_length=200)
+    lastname = models.CharField(max_length=200)
+    email = models.EmailField()
+    phoneNumber = models.IntegerField()
+
+    def __str__(self):
+        return self.firstname

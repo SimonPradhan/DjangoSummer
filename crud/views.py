@@ -55,5 +55,9 @@ def contacts(request):
 def post(request):
     return render(request, "crud/post.html")
 
+def signup(request):
+    pass
 
+def login(request):
+    return render(request, "crud/login.html")
 

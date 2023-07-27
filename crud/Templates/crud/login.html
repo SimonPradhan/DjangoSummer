@@ -1,0 +1,86 @@
+{%extends 'base.html'%}
+{%load static%}
+{%block body%}
+<header class="masthead" style="background-image: url({%static 'assets/img/contact-bg.jpg'%})">
+    <div class="container position-relative px-4 px-lg-5">
+        <div class="row gx-4 gx-lg-5 justify-content-center">
+            <div class="col-md-10 col-lg-8 col-xl-7">
+                <div class="page-heading">
+                    <h1>LOGIN</h1>
+                    <span class="Password">Welcome Back to Simon's Blog</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+<main class="mb-4">
+    <div class="container px-4 px-lg-5">
+        <div class="row gx-4 gx-lg-5 justify-content-center">
+            <div class="col-md-10 col-lg-8 col-xl-7">
+                <div class="my-5">
+                    <form id="loginform" method="post" data-sb-form-api-token="API_TOKEN">
+                        {%csrf_token%}
+                        <div class="form-floating">
+                            <input class="form-control" id="email" type="text" placeholder="Enter your email..."
+                                data-sb-validations="required" name="email" />
+                            <label for="email">Email</label>
+                            <div class="invalid-feedback" data-sb-feedback="email:required">
+                                A email is required.
+                            </div>
+                        </div>
+
+                        <div class="form-floating">
+                            <input class="form-control" id="Password" type="text" placeholder="Password..."
+                                data-sb-validations="required" name="Password"/>
+                            <label for="Password">Password</label>
+                            <div class="invalid-feedback" data-sb-feedback="Password:required">
+                                Password is required.
+                            </div>
+                            <div class="d-none" id="submitSuccessMessage">
+                                <div class="text-center mb-3">
+                                    <div class="fw-bolder">Form submission successful!</div>
+                                    To activate this form, sign up at
+                                    <br />
+                                    <a
+                                        href="https://startbootstrap.com/solution/contact-forms">https://startbootstrap.com/solution/contact-forms</a>
+                                </div>
+                            </div>
+                            <div class="d-none" id="submitErrorMessage">
+                                <div class="text-center text-danger mb-3">
+                                    Error sending message!
+                                </div>
+                            </div>
+                            <!-- Submit Button-->
+                            <button class="btn btn-primary text-uppercase" id="submit" type="submit">
+                                Login
+                            </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+<style>
+    button{
+        display: flex;
+        justify-content: center;
+        margin-top: 10px;
+        margin-left: 40%;
+    }
+</style>
+<!-- <div class="loginform">
+    <form method="Post">
+        First Name: <input type="text" name="firstName" required><br>
+        Last Name: <input type="text" name="lastName" required><br>
+        Email: <input type="email" name="email" required><br>
+        Phone No: <input type="number" name="phoneNumber" required><br>     
+    </form>
+</div>
+<style>
+    .loginform{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+</style> -->
+{%endblock%}

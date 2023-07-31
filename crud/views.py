@@ -56,7 +56,7 @@ def post(request):
     return render(request, "crud/post.html")
 
 def signup(request):
-    pass
+    return render(request, "crud/signup.html")
 
 def login(request):
     return render(request, "crud/login.html")

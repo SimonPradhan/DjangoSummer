@@ -16,11 +16,10 @@ class Contacts(models.Model):
     def __str__(self):
         return self.name
     
-class User(models.Model):
-    firstname = models.CharField(max_length=200)
-    lastname = models.CharField(max_length=200)
-    email = models.EmailField()
-    phoneNumber = models.IntegerField()
-
+class Footer(models.Model):
+    link = models.CharField(max_length=200)
+    class1= models.CharField(max_length=200)
+    class2= models.CharField(max_length=200)
+    class3= models.CharField(max_length=200)
     def __str__(self):
-        return self.firstname
+        return self.title

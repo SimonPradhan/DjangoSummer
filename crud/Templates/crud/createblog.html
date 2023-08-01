@@ -27,7 +27,7 @@
                     <form id="contactForm" method="post" data-sb-form-api-token="API_TOKEN">
                         {%csrf_token%}
                         <div class="form-floating">
-                            <input class="form-control" id="title" type="text" placeholder="Enter your title..."
+                            <input class="form-control" id="title" type="text" placeholder="Enter your title..." value="{{blog.title}}"
                                 data-sb-validations="required" name="title" />
                             <label for="title">Title</label>
                             <div class="invalid-feedback" data-sb-feedback="title:required">
@@ -36,25 +36,21 @@
                         </div>
 
                         <div class="form-floating">
-                            <input class="form-control" id="subheading" type="text" placeholder="Subheading..."
+                            <input class="form-control" id="subheading" type="text" placeholder="Subheading..." value="{{blog.subheading}}"
                                 data-sb-validations="required" name="subheading"/>
                             <label for="subheading">Sub Heading</label>
                             <div class="invalid-feedback" data-sb-feedback="subheading:required">
                                 A Sub Heading is required.
                             </div>
                             <div class="form-floating">
-                                <textarea class="form-control" id="description" placeholder="Enter your message here..." name="description"
-                                    style="height: 12rem" data-sb-validations="required"></textarea>
+                                <textarea class="form-control" id="description" placeholder="Enter your message here..." name="description" 
+                                    style="height: 12rem" data-sb-validations="required">{{blog.description}}</textarea>
                                 <label for="description">Description</label>
                                 <div class="invalid-feedback" data-sb-feedback="description:required">
                                     Description is required.
                                 </div>
                             </div>
                             <br />
-                            <!-- Submit success message-->
-                            <!---->
-                            <!-- This is what your users will see when the form-->
-                            <!-- has successfully submitted-->
                             <div class="d-none" id="submitSuccessMessage">
                                 <div class="text-center mb-3">
                                     <div class="fw-bolder">Form submission successful!</div>
@@ -64,10 +60,6 @@
                                         href="https://startbootstrap.com/solution/contact-forms">https://startbootstrap.com/solution/contact-forms</a>
                                 </div>
                             </div>
-                            <!-- Submit error message-->
-                            <!---->
-                            <!-- This is what your users will see when there is-->
-                            <!-- an error submitting the form-->
                             <div class="d-none" id="submitErrorMessage">
                                 <div class="text-center text-danger mb-3">
                                     Error sending message!
@@ -75,7 +67,6 @@
                             </div>
                             <!-- Submit Button-->
                             <button class="btn btn-primary text-uppercase" id="submit" type="submit">
-
                                 POST
                             </button>
                     </form>

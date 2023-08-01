@@ -1,12 +1,17 @@
 from django.shortcuts import render
 from django.http import HttpResponse
-from crud.models import Blog, Contacts #manager objects
+from crud.models import Blog, Contacts, Footer #manager objects
 from .forms import BlogForm
 from django.shortcuts import redirect
 # Create your views here.
 
 def index(request):
     blog = Blog.objects.all()
+    if(request.method == "POST"):
+        searchData = request.POST.get('search')
+        if(searchData != "" and searchData is not None):
+            data = Blog.objects.filter(title__icontains=searchData)
+            return render(request, "crud/home.html", {'blogs':data})
     print(blog)
     return render(request, "crud/home.html",{"blogs":blog})
 
@@ -38,7 +43,7 @@ def partData(request, id):
     context ={
         "blog":blog
     }
-    return render(request, "crud/home.html", context)
+    return render(request, "crud/post.html", context)
 
 def contacts(request):
     if(request.method == 'POST'):
@@ -61,3 +66,9 @@ def signup(request):
 def login(request):
     return render(request, "crud/login.html")
 
+def social(request):
+    social = Footer.objects.all
+    context = {
+        "footers":social
+    }
+    return render(request, "crud/post.html", context)

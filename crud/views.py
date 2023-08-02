@@ -3,17 +3,37 @@ from django.http import HttpResponse
 from crud.models import Blog, Contacts, Footer #manager objects
 from .forms import BlogForm
 from django.shortcuts import redirect
+
+from django.core.paginator import Paginator
+
+# email
+from firstProject.settings import EMAIL_HOST_USER
+from django.core.mail import EmailMessage
+from django.template.loader import render_to_string
 # Create your views here.
 
+footer = Footer.objects.all()
 def index(request):
     blog = Blog.objects.all()
-    if(request.method == "POST"):
-        searchData = request.POST.get('search')
-        if(searchData != "" and searchData is not None):
-            data = Blog.objects.filter(title__icontains=searchData)
-            return render(request, "crud/home.html", {'blogs':data})
-    print(blog)
-    return render(request, "crud/home.html",{"blogs":blog})
+    paginator = Paginator(blog, 2)
+    page_number = request.GET.get('page')
+    page_obj = paginator.get_page(page_number)
+    context = {
+        "blogs":page_obj,
+        "footer":footer
+        }
+    search_data = request.GET.get('search')
+    if search_data != "" and search_data is not None:
+        data = Blog.objects.filter(title__icontains=search_data)
+        paginator = Paginator(data, 2)
+        page_number = request.GET.get('page')
+        page_obj = paginator.get_page(page_number)
+        context = {
+            "blogs":page_obj,
+            "footer":footer
+            }
+        return render(request, "crud/home.html", context)
+    return render(request, "crud/home.html", context)
 
 def about(request):
     return render(request, "crud/about.html")
@@ -47,15 +67,24 @@ def partData(request, id):
 
 def contacts(request):
     if(request.method == 'POST'):
-        dataName= request.POST.get("name")
-        dataEmail= request.POST.get("email")
-        
-        contacts= Contacts(
-            name = dataName,
-            email=dataEmail
-        )
-        contacts.save()
-    return render(request, "crud\contact.html")
+        name = request.POST.get('name')
+        email = request.POST.get('email')
+        message = request.POST.get('message')
+        contact = Contacts(name=name, email=email)
+        subject = "Welcome to Blog Application"
+        recipient = [email]
+        contact.save()
+        template = render_to_string('migrations/email.html',{'name':name,'description':message,'mail':email})
+        email=EmailMessage(
+               subject,
+               template,
+               EMAIL_HOST_USER,
+               recipient
+           )
+        email.fail_silently=False
+        if email!=None:
+            email.send()
+    return render(request, "crud\contact.html", {"footer":footer})
 
 def post(request):
     return render(request, "crud/post.html")
@@ -66,9 +95,9 @@ def signup(request):
 def login(request):
     return render(request, "crud/login.html")
 
-def social(request):
-    social = Footer.objects.all
-    context = {
-        "footers":social
-    }
-    return render(request, "crud/post.html", context)
+# def footer(request):
+#     footer = Footer.objects.all()
+#     context = {
+#         "footer":footer
+#     }
+#     return render(request, "crud/home.html", context)

@@ -22,4 +22,4 @@ class Footer(models.Model):
     class2= models.CharField(max_length=200)
     class3= models.CharField(max_length=200)
     def __str__(self):
-        return self.title
+        return self.link

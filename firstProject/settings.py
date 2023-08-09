@@ -37,7 +37,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'crud.apps.CrudConfig'
+    'crud.apps.CrudConfig',
+    'users.apps.UsersConfig'
 ]
 
 MIDDLEWARE = [
@@ -133,3 +134,5 @@ DEFAULT_FROM_EMAIL= "np03cs4s220192@heraldcollege.edu.np"
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+LOGIN_URL = "users/login/"

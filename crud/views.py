@@ -30,7 +30,7 @@ def index(request):
         page_obj = paginator.get_page(page_number)
         context = {
             "blogs":page_obj,
-            "footer":footer
+            "footer":footer,
             }
         return render(request, "crud/home.html", context)
     return render(request, "crud/home.html", context)

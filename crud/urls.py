@@ -11,6 +11,6 @@ urlpatterns = [
     path("delete/<int:id>/", delete, name="delete"),
     path("update/<int:id>/", update, name="update"),
     path("post/", post, name="post"),
-    path("login/", login, name="login"),
-    path("signup/", signup, name="signup"),
+    # path("login/", login, name="login"),
+    # path("signup/", signup, name="signup"),
 ]

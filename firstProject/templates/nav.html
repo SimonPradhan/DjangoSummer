@@ -16,14 +16,21 @@
                     </button>
                     <div class="collapse navbar-collapse" id="navbarResponsive">
                         <ul class="navbar-nav ms-auto py-4 py-lg-0">
+                            <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" >Welcome {{user}}</a></li>
                             <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="{%url 'crud:index'%}">Home</a></li>
                             <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="{%url 'crud:about'%}">About</a></li>
                             <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="{%url 'crud:contacts'%}">Contact</a></li>
                             <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="{%url 'crud:create'%}">Create Post</a></li>
-                            <!-- <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="{%url 'crud:post'%}">Posts</a></li> -->
-                            <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="{%url 'crud:login'%}">Login</a></li>
-                            <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="{%url 'crud:signup'%}">Sign Up</a></li>
-
+                            {% if not user.is_authenticated %}
+                            <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="{%url 'users:login'%}">Login</a></li>
+                            {% endif %}
+                            {% if not user.is_authenticated %}
+                            <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="{%url 'users:signup'%}">Sign Up</a></li>
+                            {% endif %}
+                            {% if user.is_authenticated %}
+                            <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="{%url 'users:signout'%}">Signout</a></li>
+                            {% endif %}
+                            
                         </ul>
                     </div>
                 </div>

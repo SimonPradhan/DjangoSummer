@@ -10,6 +10,10 @@ from django.core.paginator import Paginator
 from firstProject.settings import EMAIL_HOST_USER
 from django.core.mail import EmailMessage
 from django.template.loader import render_to_string
+
+from django.contrib.auth.decorators import login_required
+
+
 # Create your views here.
 
 footer = Footer.objects.all()
@@ -38,6 +42,7 @@ def index(request):
 def about(request):
     return render(request, "crud/about.html")
 
+@login_required
 def create(request):
     form= BlogForm(request.POST or None)
     if form.is_valid():

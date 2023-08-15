@@ -27,7 +27,7 @@ SECRET_KEY = config('SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['https://blogapplication-c9jr.onrender.com', 'simonpradhan.com.np']
+ALLOWED_HOSTS = ['blogapplication-c9jr.onrender.com', 'simonpradhan.com.np']
 
 
 # Application definition

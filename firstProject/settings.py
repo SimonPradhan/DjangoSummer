@@ -25,9 +25,9 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = config('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = ['blogapplication-c9jr.onrender.com', 'blog.simonpradhan.com.np']
+ALLOWED_HOSTS = [ '127.1.0.0','blogapplication-c9jr.onrender.com', 'blog.simonpradhan.com.np']
 
 
 
@@ -41,8 +41,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'crud.apps.CrudConfig',
-    'users.apps.UsersConfig'
+    'crud',
+    'users'
 ]
 
 MIDDLEWARE = [

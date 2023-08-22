@@ -31,6 +31,7 @@ ALLOWED_HOSTS = ['blogapplication-c9jr.onrender.com', 'blog.simonpradhan.com.np'
 
 
 
+STATICFILES_STORAGE = "whitenoise.storage.CompressedStaticFilesStorage"
 # Application definition
 
 INSTALLED_APPS = [
@@ -57,7 +58,6 @@ MIDDLEWARE = [
 
 ROOT_URLCONF = 'firstProject.urls'
 
-STATICFILES_STORAGE = "whitenoise.storage.CompressedStaticFilesStorage"
 
 TEMPLATES = [
     {
@@ -140,7 +140,7 @@ EMAIL_BACKEND=  config('EMAIL_BACKEND')
 EMAIL_HOST= config('EMAIL_HOST')
 EMAIL_HOST_USER= config('EMAIL_HOST_USER')
 EMAIL_HOST_PASSWORD= config('EMAIL_HOST_PASSWORD')
-EMAIL_PORT= 587
+EMAIL_PORT= config('EMAIL_PORT')
 EMAIL_USE_TLS= True
 DEFAULT_FROM_EMAIL= config('DEFAULT_FROM_EMAIL')
 # Default primary key field type
@@ -150,10 +150,9 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 LOGIN_URL = "/users/login/"
 
-CSRF_COOKIE_SECURE = True
-SESSION_COOKIE_SECURE = True
-SECURE_PROXY_SSL_HEADER = None
-SECURE_SSL_REDIRECT = True
-SECURE_HSTS_SECONDS = 3600
-SECURE_HSTS_INCLUDE_SUBDOMAINS = True
-SECURE_HSTS_PRELOAD = True
+CSRF_COOKIE_SECURE=True
+SESSION_COOKIE_SECURE=True
+SECURE_SSL_REDIRECT=True
+SECURE_HSTS_SECONDS=True
+SECURE_HSTS_INCLUDE_SUBDOMAINS=True
+SECURE_HSTS_PRELOAD=True

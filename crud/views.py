@@ -79,7 +79,7 @@ def contacts(request):
         subject = "Welcome to Blog Application"
         recipient = [email]
         contact.save()
-        template = render_to_string('migrations/email.html',{'name':name,'description':message,'mail':email})
+        template = render_to_string('crud/email.html',{'name':name,'description':message,'mail':email})
         email=EmailMessage(
                subject,
                template,
@@ -89,7 +89,7 @@ def contacts(request):
         email.fail_silently=False
         if email!=None:
             email.send()
-    return render(request, "crud\contact.html", {"footer":footer})
+    return render(request, "crud/contact.html", {"footer":footer})
 
 def post(request):
     return render(request, "crud/post.html")

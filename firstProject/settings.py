@@ -25,12 +25,12 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = config('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
-ALLOWED_HOSTS = [ '127.1.0.0','blogapplication-c9jr.onrender.com', 'blog.simonpradhan.com.np']
+ALLOWED_HOSTS = [ '127.0.0.1','localhost','blogapplication-c9jr.onrender.com', 'blog.simonpradhan.com.np']
 
 
-
+    
 STATICFILES_STORAGE = "whitenoise.storage.CompressedStaticFilesStorage"
 # Application definition
 
@@ -93,6 +93,7 @@ DATABASES = {
         config('DATABASE'),
         conn_max_age=600,
         conn_health_checks=True,
+        ssl_require= True
     ),
 }
 # Password validation
@@ -152,7 +153,7 @@ LOGIN_URL = "/users/login/"
 
 CSRF_COOKIE_SECURE=True
 SESSION_COOKIE_SECURE=True
-SECURE_SSL_REDIRECT=True
+# SECURE_SSL_REDIRECT=True
 SECURE_HSTS_SECONDS=True
 SECURE_HSTS_INCLUDE_SUBDOMAINS=True
 SECURE_HSTS_PRELOAD=True
